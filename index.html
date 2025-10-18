@@ -1,72 +1,97 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile Card</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <article data-testid="test-profile-card">
+      <header aria-label="User Profile Header">
+        <h1>Profile Card</h1>
+      </header>
 
-  <article data-testid="test-profile-card">
-    <header aria-label="User Profile Header">
-      <h1>Profile Card</h1>
-    </header>
+      <div>
+        <figure>
+          <img
+            src="slack.jpg"
+            alt="User Avatar"
+            data-testid="test-user-avatar"
+          />
+        </figure>
 
-    <div>
-      <figure>
-        <img src="slack.jpg" alt="User Avatar" data-testid="test-user-avatar" />
-      </figure>
+        <!-- <img src="slack_profile.jpg" alt="Main Portrait" data-testid="test-user-photo" /> -->
+        <main data-testid="test-user-info">
+          <h1 data-testid="test-user-name" aria-label="User Profile Name">
+            Benjamin Orie
+          </h1>
 
-      <!-- <img src="slack_profile.jpg" alt="Main Portrait" data-testid="test-user-photo" /> -->
-      <main data-testid="test-user-info">
-      <h1 data-testid="test-user-name" aria-label="User Profile Name">Benjamin Orie</h1>
+          <p data-testid="test-user-bio">
+            Passionate about Software Engineer, storytelling, and building
+            meaningful digital experiences using technologies like React.js and
+            Node.js.
+          </p>
 
-      <p data-testid="test-user-bio">
-        Passionate about Software Engineer, storytelling, and building meaningful digital experiences using technologies like React.js and Node.js.
-      </p>
+          <!-- Timestamp showing rendering time in milliseconds -->
+          <p data-testid="test-user-time" aria-label="Render timestamp"></p>
 
-      <section data-testid="test-user-social-section">
-        <h2 data-testid="test-user-header">Social Links</h2>
-        <ul data-testid="test-user-social-links">
-          <li>
-            <a data-testid="test-user-social-twitter" href="https://x.com/ogechukwubenj1" target="_blank" rel="noopener noreferrer">Twitter</a>
-            </li>
-          <li>
-            <a data-testid="test-user-social-linkedin" href="https://linkedIn.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            
-          </li>
-          <li>
-            <a data-testid="test-user-social-github" href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-            
-          </li>
-        </ul>
-      </section>
+          <section data-testid="test-user-social-section">
+            <h2 data-testid="test-user-header">Social Links</h2>
+            <ul data-testid="test-user-social-links">
+              <li>
+                <a
+                  data-testid="test-user-social-twitter"
+                  href="https://x.com/ogechukwubenj1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Twitter</a
+                >
+              </li>
+              <li>
+                <a
+                  data-testid="test-user-social-linkedin"
+                  href="https://linkedIn.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >LinkedIn</a
+                >
+              </li>
+              <li>
+                <a
+                  data-testid="test-user-social-github"
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+          </section>
 
-    <main data-testid="test-user-hobbies-dislike">
-        <section data-testid="user-hobbies">
-          <h2>Hobbies</h2>
-          <ul data-testid="test-user-hobbies">
-            <li>Coding</li>
-            <li>Traveling</li>
-            <li>Sketching</li>
-          </ul>
-        </section>
+          <main data-testid="test-user-hobbies-dislike">
+            <section data-testid="user-hobbies">
+              <h2>Hobbies</h2>
+              <ul data-testid="test-user-hobbies">
+                <li>Coding</li>
+                <li>Traveling</li>
+                <li>Sketching</li>
+              </ul>
+            </section>
 
-        <section data-testid="user-dislike">
-          <h2>Dislikes</h2>
-          <ul data-testid="test-user-dislikes">
-            <li>Spam emails</li>
-            <li>Cold coffee</li>
-            <li>Traffic jams</li>
-          </ul>
-        </section>
-      </main>
-    </main>
-  </div>
-  </article>
+            <section data-testid="user-dislike">
+              <h2>Dislikes</h2>
+              <ul data-testid="test-user-dislikes">
+                <li>Spam emails</li>
+                <li>Cold coffee</li>
+                <li>Traffic jams</li>
+              </ul>
+            </section>
+          </main>
+        </main>
+      </div>
+    </article>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
