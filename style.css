@@ -1,0 +1,158 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+article[data-testid="test-profile-card"] {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+div{
+  display:flex;
+  flex-direction: row;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+figure img {
+  width: 100px;
+  border-radius: 50%;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+img[data-testid="test-user-photo"] {
+  width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 10px;
+}
+
+p[data-testid="test-user-bio"] {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+section {
+  margin-bottom: 1rem;
+}
+
+section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color:#0077cc;
+  padding-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul[data-testid="test-user-social-links"] {
+  display: flex;
+  flex-direction: row;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  display: block;
+  font-weight: bold;
+}
+
+a[data-testid^="test-user-social-"] {
+  padding: 0.5rem 0.5rem;
+  border: none;
+  background-color: #0077cc;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0.25rem;
+  min-width: 100px;
+  text-decoration: none;
+  text-align: center;
+  color:white;
+  font-weight: bold;
+}
+
+a[data-testid^="test-user-social-"]:focus {
+  outline: 3px solid #ff0000;
+  outline-offset: 2px;
+}
+
+
+a:hover {
+  background-color: #005fa3;
+}
+
+main[data-testid="test-user-hobbies-dislike"] {
+  display:flex;
+  gap: 200px;
+  flex-direction: row;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  article {
+    padding: 0;
+  }
+
+  figure img {
+    width: 80px;
+  }
+
+  div{
+    flex-direction: column;
+  }
+
+  main[data-testid="test-user-hobbies-dislike"] {
+  gap: 0;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+  flex-direction: columns;
+ }
+
+ ul[data-testid="test-user-social-links"] {
+  flex-direction: column;
+  
+}
+
+
+article[data-testid="test-profile-card"] {
+  max-width: 100%;
+  margin: auto;
+  padding: 20px 20px 0px  20px;
+  
+}
+body{
+  padding: 0px;
+  margin: 0;
+  /* overflow: hidden; */
+}
+
+section h2 {
+  padding-top: 0px;
+}
+}
