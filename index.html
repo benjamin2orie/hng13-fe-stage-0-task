@@ -1,97 +1,319 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Card</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <article data-testid="test-profile-card">
-      <header aria-label="User Profile Header">
-        <h1>Profile Card</h1>
-      </header>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      <div>
-        <figure>
-          <img
-            src="slack.jpg"
-            alt="User Avatar"
-            data-testid="test-user-avatar"
-          />
-        </figure>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border: #2a2a3e;
+            --radius: 12px;
+        }
 
-        <!-- <img src="slack_profile.jpg" alt="Main Portrait" data-testid="test-user-photo" /> -->
-        <main data-testid="test-user-info">
-          <h1 data-testid="test-user-name" aria-label="User Profile Name">
-            Benjamin Orie
-          </h1>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: var(--text-primary);
+        }
 
-          <p data-testid="test-user-bio">
-            Passionate about Software Engineer, storytelling, and building
-            meaningful digital experiences using technologies like React.js and
-            Node.js.
-          </p>
+        main {
+            width: 100%;
+            max-width: 900px;
+        }
 
-          <!-- Timestamp showing rendering time in milliseconds -->
-          <p data-testid="test-user-time" aria-label="Render timestamp"></p>
+        article[data-testid="test-profile-card"] {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-          <section data-testid="test-user-social-section">
-            <h2 data-testid="test-user-header">Social Links</h2>
-            <ul data-testid="test-user-social-links">
-              <li>
-                <a
-                  data-testid="test-user-social-twitter"
-                  href="https://x.com/ogechukwubenj1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Twitter</a
+        article[data-testid="test-profile-card"]:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Avatar Section */
+        figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        img[data-testid="test-user-avatar"] {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(15, 52, 96, 0.3);
+        }
+
+        figcaption {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        h2[data-testid="test-user-name"] {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        p[data-testid="test-user-bio"] {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .time-container {
+            background: var(--accent);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+
+        .time-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        nav[data-testid="test-user-social-links"] {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background: #0f3460;
+            border-color: var(--text-primary);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        nav a:focus-visible {
+            outline: 2px solid var(--text-primary);
+            outline-offset: 2px;
+        }
+
+        .lists-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        section h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        li {
+            font-size: 15px;
+            color: var(--text-primary);
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            article[data-testid="test-profile-card"] {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px 20px;
+            }
+
+            h2[data-testid="test-user-name"] {
+                font-size: 24px;
+            }
+
+            img[data-testid="test-user-avatar"] {
+                width: 150px;
+                height: 150px;
+            }
+
+            .lists-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav[data-testid="test-user-social-links"] {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            article[data-testid="test-profile-card"] {
+                padding: 20px;
+            }
+
+            h2[data-testid="test-user-name"] {
+                font-size: 20px;
+            }
+
+            p[data-testid="test-user-bio"] {
+                font-size: 14px;
+            }
+
+            img[data-testid="test-user-avatar"] {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <article data-testid="test-profile-card">
+            <figure>
+                <img 
+                    data-testid="test-user-avatar"
+                    src="slack.jpg" 
+                    alt="Profile picture"
                 >
-              </li>
-              <li>
-                <a
-                  data-testid="test-user-social-linkedin"
-                  href="https://linkedIn.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >LinkedIn</a
-                >
-              </li>
-              <li>
-                <a
-                  data-testid="test-user-social-github"
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub</a
-                >
-              </li>
-            </ul>
-          </section>
+                <figcaption>Frontend & Backend Developer</figcaption>
+            </figure>
 
-          <main data-testid="test-user-hobbies-dislike">
-            <section data-testid="user-hobbies">
-              <h2>Hobbies</h2>
-              <ul data-testid="test-user-hobbies">
-                <li>Coding</li>
-                <li>Traveling</li>
-                <li>Sketching</li>
-              </ul>
-            </section>
+            <header>
+                <h2 data-testid="test-user-name">Benjamin Orie</h2>
+                
+                <p data-testid="test-user-bio">
+                    Passionate about building beautiful, accessible web experiences. I specialize in modern frontend development and Backend with a focus on performance and user experience. When I'm not coding, you'll find me exploring new design trends or contributing to open-source projects.
+                </p>
 
-            <section data-testid="user-dislike">
-              <h2>Dislikes</h2>
-              <ul data-testid="test-user-dislikes">
-                <li>Spam emails</li>
-                <li>Cold coffee</li>
-                <li>Traffic jams</li>
-              </ul>
-            </section>
-          </main>
-        </main>
-      </div>
-    </article>
+                <div class="time-container">
+                    <div class="time-label">Current Time (milliseconds)</div>
+                    <div data-testid="test-user-time" id="current-time">0</div>
+                </div>
 
-    <script src="script.js"></script>
-  </body>
+                <nav data-testid="test-user-social-links">
+                    <a href="https://x.com/ogechukwubenj1" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-twitter" title="Twitter">𝕏</a>
+                    <a href="https://github.com/benjamin2orie" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-github" title="GitHub"><img src="github.png" alt="github" height="20px"></a>
+                    <a href="https://www.linkedin.com/in/benjamin-orie" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-linkedin" title="LinkedIn">in</a>
+                    <a href="https://www.instagram.com/ogechukwu_benj" target="_blank" rel="noopener noreferrer" data-testid="test-user-social-instagram" title="Instagram"><img src="https://img.freepik.com/free-vector/instagram-vector-social-media-icon-7-june-2021-bangkok-thailand_53876-136728.jpg?semt=ais_hybrid&w=740&q=80" alt="" height="20px"></a>
+                </nav>
+
+                <div class="lists-container">
+                    <section>
+                        <h3>Hobbies</h3>
+                        <ul data-testid="test-user-hobbies">
+                            <li>Web Development</li>
+                            <li>Backend Development</li>
+                            <li>Football</li>
+                            <li>Open Source</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Dislikes</h3>
+                        <ul data-testid="test-user-dislikes">
+                            <li>Slow Websites</li>
+                            <li>Poor Accessibility</li>
+                            <li>Outdated Code</li>
+                            <li>Unclear Documentation</li>
+                        </ul>
+                    </section>
+                </div>
+            </header>
+        </article>
+    </main>
+
+    <script>
+        function updateTime() {
+            const timeElement = document.getElementById('current-time');
+            timeElement.textContent = Date.now();
+        }
+
+        updateTime();
+
+        setInterval(updateTime, 100);
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    link.click();
+                }
+            });
+        });
+    </script>
+</body>
 </html>
