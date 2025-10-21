@@ -4,20 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About me</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border: #2a2a3e;
+            --radius: 12px;
+            --input-radius: 5px;
+       }
+
+        body {
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+         background: linear-gradient(
+            135deg,
+            var(--primary) 0%,
+            var(--secondary) 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 20px;
+        color: var(--text-primary);
+    }
+
+    header[data-testid="test-user-about"] h3{
+        text-transform: capitalize;
+        font-weight: bold;
+        color: var(--text-secondary);
+
+    }
+    h2{
+        color: var(--text-secondary);
+        padding-bottom: 10px;
+    }
+    main[data-testid="test-about-page"]{
+        background-color: var(--secondary);
+        width: 900px;
+        height: auto;
+        margin: auto;
+        padding: 30px 0 30px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        border-radius: var(--radius);
+        margin: 1em 0;
+    }
+    section[data-testid="test-about-bio"]{
+        display: flex;
+        justify-content: space-around;
+        gap: 3em;
+        padding: 3em;
+    }
+
+    section[data-testid="test-about-goals"],
+    section[data-testid="test-about-confidence"],
+    section[data-testid="test-about-future-note"]{
+        border-bottom: 0.5px solid #aaa;
+    }
+
+    section[data-testid="test-about-goals"],
+    section[data-testid="test-about-confidence"],
+    section[data-testid="test-about-future-note"],
+    section[data-testid="test-about-extra"]{
+        padding: 1em 3em;
+        font-weight: bold;
+    }
+
+    img[data-testid="test-user-avatar"] {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--accent);
+        box-shadow: 0 10px 30px rgba(15, 52, 96, 0.3);
+    }
+
+    figcaption {
+        font-size: 14px;
+        color: var(--text-secondary);
+        text-align: center;
+    }
+     
+    @media (max-width:768px) {
+
+      main[data-testid="test-about-page"]{
+            width: 100%;
+            align-items: center;
+       }
+
+       h2{
+        font-size: 15px;
+       }
+
+        section[data-testid="test-about-bio"]{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            padding: 0em 1em;
+       }
+
+       figure {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+       }
+
+        section[data-testid="test-about-goals"],
+        section[data-testid="test-about-confidence"],
+        section[data-testid="test-about-future-note"],
+        section[data-testid="test-about-extra"]{
+            padding: 1em 2em;
+        }
+        
+    }
+    </style>
 </head>
 <body>
-    <h3>Welcome to about me</h3>
-    <a href="./index.html" target="_blank">back to home</a>
+    <header data-testid="test-user-about">
+     <h3 >Welcome to about me</h3>
+     <a href="./index.html" target="_blank">Back to home</a>
+    </header>
 
     <main data-testid="test-about-page">
-        <h1>About Me</h1>
 
         <section data-testid="test-about-bio">
+            <figure>
+                <img 
+                    data-testid="test-user-avatar"
+                    src="slack.jpg" 
+                    alt="Profile picture"
+                >
+                <figcaption>Benjamin Orie</figcaption>
+            </figure>
+
+            <div>
             <h2>Bio</h2>
+            <p>Software Engineer</p>
+            <p>Diploma in Computer Science</p>
             <p>
             I'm a curious and creative learner passionate about growth, collaboration, and making meaningful impact.
             I enjoy solving problems, exploring new ideas, and connecting with people from diverse backgrounds.
             </p>
+            </div>
         </section>
 
         <section data-testid="test-about-goals">
