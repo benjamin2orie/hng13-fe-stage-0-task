@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact us</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #1a1a2e;
+        --secondary: #16213e;
+        --accent: #0f3460;
+        --text-primary: #ffffff;
+        --text-secondary: #b0b0b0;
+        --border: #2a2a3e;
+        --radius: 12px;
+        --input-radius: 5px;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 20px;
+        color: var(--text-primary);
+      }
+
+      form[data-testid="test-user-form"] {
+        /* width: 100%; */
+        background-color: var(--secondary);
+        width: 500px;
+        height: auto;
+        margin: auto;
+        padding: 30px 30px 30px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        /* align-items: center; */
+        justify-content: center;
+        border-radius: var(--radius);
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      div label {
+        font-size: 15px;
+        color: var(--text-secondary);
+      }
+      input[data-testid="test-contact-name"],
+      input[data-testid="test-contact-email"],
+      input[data-testid="test-contact-subject"] {
+        background: var(--text-secondary);
+        color: black;
+        border: none;
+        outline: none;
+        font-size: 17px;
+        height: 40px;
+        border-radius: var(--input-radius);
+        padding: 0 10px;
+      }
+
+      input[data-testid="test-contact-name"].errors,
+      input[data-testid="test-contact-email"].errors,
+      input[data-testid="test-contact-subject"].errors{
+        border: 1px solid red;
+      }
+
+      textarea[data-testid="test-contact-message"] {
+        height: 100px;
+        border-radius: var(--input-radius);
+        outline: none;
+        padding: 7px 10px;
+        background: var(--text-secondary);
+        font-size: 17px;
+        color: black;
+        resize: none;
+      }
+
+      textarea[data-testid="test-contact-message"].error{
+        border: 1px solid red;
+      }
+
+      #name-error,
+      #email-error,
+      #subject-error,
+       #error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        }
+
+   
+
+      button[data-testid="test-contact-submit"] {
+        background-color: #802000;
+        cursor: pointer;
+        border-radius: var(--input-radius);
+        padding: 10px 0;
+        border: none;
+        color: var(--text-primary);
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      p[data-testid="test-contact-success"]{
+        color: green;
+        padding: 0 0 13px 0;
+        text-align: center;
+      }
+      h3{
+        color:var(--text-secondary);
+        font-weight: bold;
+        padding-bottom: 3px;
+      }
+
+
+
+      @media (max-width:768px) {
+        h3{
+            color: var(--text-primary)
+        }
+
+        body{
+         align-items: center;
+        justify-content: start;
+        }
+
+        form[data-testid="test-user-form"] {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding:30px 20px 0px 20px;
+        margin-top: 2em;
+      }
+        
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Welcome to contact us page</h3>
+    <a href="./index.html" target="_blank">Back to home</a>
+    <form action="#" data-testid="test-user-form" id="contactForm" novalidate>
+      <div>
+        <label for="name">Full name <span style="color: red">*</span></label>
+        <input
+          data-testid="test-contact-name"
+          id="name"
+          name="name"
+          required
+          placeholder="Enter your full name"
+          type="text"
+        />
+        <p data-testid="test-contact-error-name" id="name-error"></p>
+      </div>
+      <div>
+        <label for="email">Email <span style="color: red">*</span></label>
+        <input
+          data-testid="test-contact-email"
+          id="email"
+          name="email"
+          required
+          placeholder="Enter your email"
+          type="email"
+        />
+        <p data-testid="test-contact-error-email" id="email-error"></p>
+      </div>
+      <div>
+        <label for="subject">Subject <span style="color: red">*</span></label>
+        <input
+          data-testid="test-contact-subject"
+          id="subject"
+          name="subject"
+          required
+          placeholder="Enter your subject"
+          type="text"
+        />
+        <p data-testid="test-contact-error-subject" id="subject-error"></p>
+      </div>
+      <div>
+        <label for="message">Message <span style="color: red">*</span></label>
+        <textarea
+            id="message"
+            name="message"
+            placeholder="Message"
+            data-testid="test-contact-message"
+            required
+            minlength="10"></textarea>
+        <p data-testid="test-contact-error-message" id="error-message"></p>
+      </div>
+      <button type="submit" data-testid="test-contact-submit">Submit</button>
+      <p id="successMessage" data-testid="test-contact-success"></p>
+    </form>
+
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const textarea = document.getElementById('message');
+        const errorMsg = document.getElementById('error-message');
+
+        const inputField = document.getElementById('name');
+        const inputError = document.getElementById('name-error');
+
+        const subject = document.getElementById('subject');
+        const subjectErr = document.getElementById('subject-error');
+
+        const email = document.getElementById('email');
+        const emailErr = document.getElementById('email-error');
+
+        const success = document.getElementById('successMessage');
+
+        // Validate on submit
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+        // Textarea validation
+        if (!textarea.checkValidity()) {
+        textarea.classList.add('error');
+        if (textarea.validity.valueMissing) {
+            errorMsg.textContent = 'Message is required.';
+        } else if (textarea.validity.tooShort) {
+            errorMsg.textContent = `Message must be at least ${textarea.minLength} characters.`;
+        }
+        } else {
+        textarea.classList.remove('error');
+        errorMsg.textContent = '';
+        }
+
+       // Name validation
+        if (!inputField.checkValidity()) {
+        inputField.classList.add('errors');
+        if (inputField.validity.valueMissing) {
+            inputError.textContent = 'Full name is required';
+        }
+        } else {
+        inputField.classList.remove('errors');
+        inputError.textContent = '';
+        }
+
+        // Inside your form submit handler:
+        if (!email.checkValidity()) {
+        email.classList.add('errors');
+
+        if (email.validity.valueMissing) {
+            emailErr.textContent = 'Email is required';
+        } else if (email.validity.typeMismatch) {
+            emailErr.textContent = 'Please enter a valid email address';
+        }
+        } else {
+        email.classList.remove('errors');
+        emailErr.textContent = '';
+        }
+
+        // Subject validation
+        if (!subject.checkValidity()) {
+            subject.classList.add('errors');
+            if (subject.validity.valueMissing) {
+                subjectErr.textContent = 'Subject is required';
+            }
+            } else {
+            subject.classList.remove('errors');
+            subjectErr.textContent = '';
+            }
+            if(textarea.checkValidity() &&
+            inputField.checkValidity() &&
+            subject.checkValidity() &&
+            email.checkValidity()){
+                success.textContent ="Form submitted successfully!";
+                form.reset()
+            } else{
+                success.textContent = ''
+            }
+       });
+
+        // Live validation for name
+        inputField.addEventListener('input', () => {
+            if (inputField.checkValidity()) {
+            inputField.classList.remove('errors');
+            inputError.textContent = '';
+            }
+        });
+
+
+        // Live validation
+        email.addEventListener('input', () => {
+        if (email.checkValidity()) {
+            email.classList.remove('errors');
+            emailErr.textContent = '';
+        }
+        });
+
+        // Live validation for subject
+        subject.addEventListener('input', () => {
+            if (subject.checkValidity()) {
+            subject.classList.remove('errors');
+            subjectErr.textContent = '';
+            }
+        });
+   </script>
+
+  </body>
+</html>

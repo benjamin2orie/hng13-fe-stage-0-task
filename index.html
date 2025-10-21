@@ -30,6 +30,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             padding: 20px;
             color: var(--text-primary);
         }
@@ -122,6 +123,18 @@
             flex-wrap: wrap;
         }
 
+        header[data-testid="test-contact"]{
+            display:flex;
+            padding-bottom: 30px;
+            flex-direction: row;
+        }
+
+        header a{
+            color: var(--text-secondary);
+            text-transform: capitalize;
+            text-decoration: none;
+        }
+
         nav a {
             display: inline-flex;
             align-items: center;
@@ -146,10 +159,19 @@
             outline: none;
         }
 
+        header[data-testid="test-contact"] a:hover,
+        header[data-testid="test-contact"] a:focus{
+            border-bottom: 1px solid red;
+            border-color: var(--text-primary);
+            transform:translateY(-2px);
+            outline: none;
+        }
+
         nav a:focus-visible {
             outline: 2px solid var(--text-primary);
             outline-offset: 2px;
         }
+
 
         .lists-container {
             display: grid;
@@ -241,8 +263,15 @@
     </style>
 </head>
 <body>
+    <header data-testid="test-contact">
+        <a href="./contact-us.html" target="_blank">contact us</a>
+        <a href="./about-me.html" target="_blank">about me</a>
+    </header>
     <main>
+       
         <article data-testid="test-profile-card">
+            <!-- <a href="./contact-us.html" target="_blank">contact us</a> -->
+            <!-- <a href="./about-me.html" target="_blank">about me</a> -->
             <figure>
                 <img 
                     data-testid="test-user-avatar"
